@@ -7,6 +7,7 @@ import { DataTablesListComponent } from './data-tables-list/data-tables-list.com
 import { NavbarComponent } from './navbar/navbar.component';
 import { CellsViewComponent } from './cells-view/cells-view.component';
 import { SelectionViewComponent } from './selection-view/selection-view.component';
+import { MarkedCellsViewComponent } from './marked-cells-view/marked-cells-view.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SelectionViewComponent } from './selection-view/selection-view.componen
     DataTablesListComponent,
     NavbarComponent,
     CellsViewComponent,
-    SelectionViewComponent
+    SelectionViewComponent,
+    MarkedCellsViewComponent
   ],
   imports: [
     BrowserModule,
