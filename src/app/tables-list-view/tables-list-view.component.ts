@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tables-list-view.component.css']
 })
 export class DataTablesListComponent implements OnInit {
-
+  dataTablesString = [
+    'Data table 1',
+    'Data table 2',
+    'Data table 3',
+ ]
   constructor() { }
 
   ngOnInit() {
