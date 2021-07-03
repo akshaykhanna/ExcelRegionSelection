@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataTablesListComponent } from './data-tables-list/data-tables-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTablesListComponent
+    DataTablesListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

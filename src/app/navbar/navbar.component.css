@@ -1,0 +1,7 @@
+.navbar-bg {
+  background: #212442;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
