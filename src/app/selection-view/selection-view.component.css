@@ -1,0 +1,31 @@
+.heading {
+  font-family: Helvetica Neue;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.content {
+  height: 60px;
+  width: 492px;
+  left: 32px;
+  top: 327px;
+  border-radius: 0px;
+  background: #212442;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.content-text {
+  font-family: Helvetica Neue;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.6);
+}
