@@ -1,4 +1,8 @@
 <h1 class="heading">Selection</h1>
 <div class="content">
-  <span class="content-text"> Please select a cell </span>
+  <div *ngIf="!isCellSelected; else other_content">
+    <span class="content-text"> Please select a cell </span>
+  </div>
+
+  <ng-template #other_content>{{selectedCell}}</ng-template>
 </div>
