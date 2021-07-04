@@ -1,11 +1,13 @@
 <div class="cells-view">
   <div class="main">
-    <app-cells-grid></app-cells-grid>
-    <app-selection-view></app-selection-view>
-    <app-selection-view [selectedCell]="'E1'" ></app-selection-view>
+    <app-cells-grid
+      [cells]="cells"
+      [selectedCellId]="selectedCellId"
+      (cellClick)="selectCell($event)"
+    ></app-cells-grid>
+    <app-selection-view [selectedCellId]="selectedCellId"></app-selection-view>
   </div>
   <div class="right-aside">
     <app-marked-cells-view></app-marked-cells-view>
   </div>
 </div>
-

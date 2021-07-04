@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CellsService } from '../cells.service';
-import Cell from '../../models/cell';
+import Cell, { CellStatus } from '../../models/cell';
 
 @Component({
   selector: 'app-cells-grid',
@@ -11,12 +11,13 @@ export class CellsGridComponent implements OnInit {
   noOfCols: number;
   noOfRows: number;
   @Input() cells: Cell[][] = [];
+  @Input() selectedCellId = '';
+  @Output() cellClick = new EventEmitter<string>();
 
   colCharList: string[] = [];
   constructor(private cellsService: CellsService) {}
 
   ngOnInit() {
-    this.cells = this.cellsService.getCells(7, 9);
     console.log('this.cells:', this.cells);
     this.noOfRows = this.cells.length;
     this.noOfCols = this.cells[0].length;
@@ -28,5 +29,12 @@ export class CellsGridComponent implements OnInit {
       this.colCharList.push(this.cellsService.colName(i));
     }
     console.log('this.colCharList:', this.colCharList);
+  }
+  isMarked(cell: Cell) {
+    return cell.status === CellStatus.MARKED;
+  }
+  onCellClick(cell: Cell) {
+    if (this.isMarked(cell)) { return; }
+    this.cellClick.emit(cell.id);
   }
 }

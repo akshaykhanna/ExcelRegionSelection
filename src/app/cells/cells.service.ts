@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Cell from '../models/cell';
+import Cell, { CellStatus } from '../models/cell';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,12 @@ export class CellsService {
     for (let i = 0; i < rows; i++) {
       const cellsRow = [];
       for (let j = 0; j < cols; j++) {
-        cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter)));
+        if ((counter + 1) % 10 === 0) {
+          cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter), CellStatus.MARKED));
+        } else {
+          cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter)));
+        }
+
       }
       cells.push(cellsRow);
     }
