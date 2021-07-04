@@ -1,5 +1,14 @@
 <ul>
   <li *ngFor="let tableName of dataTablesString">
-    <div class="list-item">{{ tableName }}</div>
+    <div
+      class="list-item"
+      [class.bg-dark-grey]="isTableSelected(tableName)"
+      (click)="onTableSelect(tableName)"
+    >
+      <span class="item-name"> {{ tableName }}</span>
+      <button *ngIf="isTableSelected(tableName)" class="app-button">
+        SHARE
+      </button>
+    </div>
   </li>
 </ul>

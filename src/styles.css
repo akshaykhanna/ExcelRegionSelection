@@ -15,3 +15,12 @@ body {
   background: rgba(19, 60, 217, 1);
   color: #fff;
 }
+.bg-black{
+  background: #131636;
+}
+.bg-light-grey{
+  background: #212442;
+}
+.bg-dark-grey{
+  background: rgba(255, 255, 255, 0.1);
+}
