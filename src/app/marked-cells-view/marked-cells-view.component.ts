@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./marked-cells-view.component.css']
 })
 export class MarkedCellsViewComponent implements OnInit {
-
+  markedCells = ['E1', 'E2', 'E3'];
   constructor() { }
 
   ngOnInit() {

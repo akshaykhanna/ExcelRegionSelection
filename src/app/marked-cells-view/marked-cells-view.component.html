@@ -1,1 +1,8 @@
-<p>marked-cells-view works!</p>
+<ul>
+  <li *ngFor="let markedCell of markedCells">
+    <div class="list-item">
+      <span>{{ markedCell }}</span>
+      <a class="remove-link">remove</a>
+    </div>
+  </li>
+</ul>
