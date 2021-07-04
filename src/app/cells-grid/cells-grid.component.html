@@ -1,41 +1,21 @@
 <div>
   <h1>Data</h1>
-  <table cellspacing=6>
+  <table cellspacing="6">
     <tr>
       <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-      <th>E</th>
-      <th>F</th>
+      <th *ngFor="let colName of colCharList">{{ colName }}</th>
     </tr>
-    <tr>
-      <td class="si-no">1</td>
-      <td class="cell">2</td>
-      <td class="cell">3</td>
-      <td class="cell marked-cell">4</td>
-      <td class="cell">50</td>
-      <td class="cell">8</td>
-      <td class="cell">50</td>
-    </tr>
-    <tr>
-      <td class="si-no">2</td>
-      <td class="cell">8</td>
-      <td class="cell">94</td>
-      <td class="cell">8</td>
-      <td class="cell marked-cell">94</td>
-      <td class="cell">8</td>
-      <td class="cell">94</td>
-    </tr>
-    <tr>
-      <td class="si-no">3</td>
-      <td class="cell">8</td>
-      <td class="cell selected-cell">94</td>
-      <td class="cell">8</td>
-      <td class="cell">94</td>
-      <td class="cell marked-cell">8</td>
-      <td class="cell">94</td>
+    <tr *ngFor="let rowNo of rowList">
+      <td class="si-no">{{ rowNo + 1 }}</td>
+      <td
+
+        *ngFor="let rowData of genratedRowData(rowNo), let i = index"
+        [class.marked-cell]="(rowNo+i) % 3 == 0"
+        [class.selected-cell]="rowData == 'F7'"
+        class="cell"
+      >
+        {{ rowData }}
+      </td>
     </tr>
   </table>
 </div>

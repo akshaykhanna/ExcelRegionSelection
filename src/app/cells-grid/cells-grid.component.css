@@ -1,3 +1,6 @@
+ul {
+  overflow: auto;
+}
 h1 {
   font-family: Helvetica Neue;
   font-size: 16px;
