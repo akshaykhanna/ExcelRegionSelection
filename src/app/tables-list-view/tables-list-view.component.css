@@ -1,3 +1,6 @@
+.list {
+  margin: 32px;
+}
 ul {
   list-style-type: none;
   padding: 0;

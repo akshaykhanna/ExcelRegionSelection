@@ -1,0 +1,12 @@
+.cells {
+  position: relative;
+  width: 100vh;
+}
+.main {
+  margin: 32px;
+}
+.right-aside {
+ position:absolute;
+ right: 0;
+ top: 80px;
+}

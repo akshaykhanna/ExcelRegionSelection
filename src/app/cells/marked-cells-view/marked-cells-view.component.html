@@ -1,8 +1,12 @@
-<ul>
-  <li *ngFor="let markedCell of markedCells">
-    <div class="list-item">
-      <span>{{ markedCell }}</span>
-      <a class="remove-link">remove</a>
-    </div>
-  </li>
-</ul>
+<div class="marked-view bg-light-grey">
+  <h1 class="heading">Marked Cells</h1>
+  <div *ngIf="markedCells.length === 0" class="text">No cells are marked</div>
+  <ul  *ngIf="markedCells.length > 0">
+    <li *ngFor="let markedCell of markedCells">
+      <div class="list-item">
+        <span>{{ markedCell }}</span>
+        <a class="remove-link">remove</a>
+      </div>
+    </li>
+  </ul>
+</div>

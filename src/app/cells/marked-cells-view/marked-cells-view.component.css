@@ -1,3 +1,24 @@
+.marked-view {
+  height: 942px;
+  width: 369px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.heading {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+.text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
 ul {
   list-style-type: none;
   padding: 0;
