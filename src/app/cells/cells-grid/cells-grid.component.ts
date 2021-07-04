@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CellsService } from '../cells.service';
+import Cell from '../../models/cell';
 
 @Component({
   selector: 'app-cells-grid',
@@ -6,46 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cells-grid.component.css'],
 })
 export class CellsGridComponent implements OnInit {
-  @Input() noOfCols = 10;
-  @Input() noOfRows = 15;
+  noOfCols: number;
+  noOfRows: number;
+  @Input() cells: Cell[][] = [];
+
   colCharList: string[] = [];
-  rowList: number[] = [];
-  constructor() {}
+  constructor(private cellsService: CellsService) {}
 
   ngOnInit() {
-    this.genrateCols();
-    this.genrateRows();
+    this.cells = this.cellsService.getCells(7, 9);
+    console.log('this.cells:', this.cells);
+    this.noOfRows = this.cells.length;
+    this.noOfCols = this.cells[0].length;
+    this.genrateColHeaders();
   }
-  genrateCols() {
-    for (let i = 0; i < this.noOfCols; i++) {
-      this.colCharList.push(colName(i));
-    }
-    console.log(this.colCharList);
-  }
-  genrateRows() {
-    for (let i = 0; i < this.noOfRows; i++) {
-      this.rowList.push(i);
-    }
-  }
-  genratedRowData(rowNo): string[] {
-    const rowData = [];
-    for (let i = 0; i < this.noOfCols; i++) {
-      rowData.push(colName(i) + '' + (rowNo + 1));
-    }
-    console.log(rowData);
-    return rowData;
-  }
-}
 
-function colName(n: number) {
-  const ordA = 'a'.charCodeAt(0);
-  const ordZ = 'z'.charCodeAt(0);
-  const len = ordZ - ordA + 1;
-
-  let s = '';
-  while (n >= 0) {
-    s = String.fromCharCode((n % len) + ordA) + s;
-    n = Math.floor(n / len) - 1;
+  genrateColHeaders() {
+    for (let i = 0; i < this.noOfCols; i++) {
+      this.colCharList.push(this.cellsService.colName(i));
+    }
+    console.log('this.colCharList:', this.colCharList);
   }
-  return s.toUpperCase();
 }

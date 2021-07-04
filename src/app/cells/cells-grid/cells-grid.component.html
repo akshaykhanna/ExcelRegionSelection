@@ -1,20 +1,20 @@
 <div>
   <h1>Data</h1>
-  <table cellspacing="6">
+  <table *ngIf="cells.length >0" cellspacing="6">
     <tr>
       <th></th>
       <th *ngFor="let colName of colCharList">{{ colName }}</th>
     </tr>
-    <tr *ngFor="let rowNo of rowList">
+    <tr *ngFor="let row of cells; let rowNo = index">
       <td class="si-no">{{ rowNo + 1 }}</td>
       <td
 
-        *ngFor="let rowData of genratedRowData(rowNo), let i = index"
-        [class.marked-cell]="(rowNo+i) % 3 == 0"
-        [class.selected-cell]="rowData == 'F7'"
+        *ngFor="let col of row let colNo = index"
+        [class.marked-cell]="(rowNo+colNo) % 3 == 0"
+        [class.selected-cell]="col.value == '15'"
         class="cell"
       >
-        {{ rowData }}
+        {{ col.value }}
       </td>
     </tr>
   </table>
