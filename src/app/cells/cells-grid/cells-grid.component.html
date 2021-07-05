@@ -11,7 +11,7 @@
         *ngFor="let col of row; let colNo = index"
         (click)="onCellClick(col)"
         [class.marked-cell]="isMarked(col)"
-        [class.selected-cell]="col.id == selectedCellId"
+        [class.selected-cell]="selectedCell && col.id == selectedCell.id"
         class="cell"
       >
         {{ col.value }}

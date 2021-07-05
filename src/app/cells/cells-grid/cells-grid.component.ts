@@ -11,8 +11,8 @@ export class CellsGridComponent implements OnInit {
   noOfCols: number;
   noOfRows: number;
   @Input() cells: Cell[][] = [];
-  @Input() selectedCellId = '';
-  @Output() cellClick = new EventEmitter<string>();
+  @Input() selectedCell: Cell;
+  @Output() cellClick = new EventEmitter<Cell>();
 
   colCharList: string[] = [];
   constructor(private cellsService: CellsService) {}
@@ -35,6 +35,6 @@ export class CellsGridComponent implements OnInit {
   }
   onCellClick(cell: Cell) {
     if (this.isMarked(cell)) { return; }
-    this.cellClick.emit(cell.id);
+    this.cellClick.emit(cell);
   }
 }

@@ -2,10 +2,12 @@
   <div class="main">
     <app-cells-grid
       [cells]="cells"
-      [selectedCellId]="selectedCellId"
+      [selectedCell]="selectedCell"
       (cellClick)="selectCell($event)"
     ></app-cells-grid>
-    <app-selection-view [selectedCellId]="selectedCellId"></app-selection-view>
+    <app-selection-view [selectedCell]="selectedCell"
+    (markCell)="resetSelectedCell()"
+    ></app-selection-view>
   </div>
   <div class="right-aside">
     <app-marked-cells-view></app-marked-cells-view>

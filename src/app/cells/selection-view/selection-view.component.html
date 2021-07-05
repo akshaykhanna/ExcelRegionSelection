@@ -8,8 +8,8 @@
 
   <ng-template #other_content>
     <div class="inner-content">
-      <span class="inner-text">{{ selectedCellId }}</span>
-      <button class="app-button">MARK</button>
+      <span class="inner-text">{{ selectedCell.id }}</span>
+      <button class="app-button" (click)="onMarkCell()">MARK</button>
     </div>
   </ng-template>
 </div>

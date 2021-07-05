@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import Cell, { CellStatus } from '../../models/cell';
 
 @Component({
   selector: 'app-selection-view',
@@ -6,19 +7,24 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
   styleUrls: ['./selection-view.component.css'],
 })
 export class SelectionViewComponent implements OnInit, OnChanges {
-  @Input() selectedCellId = '';
+  @Input() selectedCell: Cell;
+  @Output() markCell = new EventEmitter();
   isCellSelected: boolean;
   constructor() {}
 
   ngOnInit() {
-    this.isCellSelected = this.selectedCellId
-      ? this.selectedCellId !== ''
+    this.isCellSelected = this.selectedCell
+      ? this.selectedCell.id !== ''
       : false;
   }
 
   ngOnChanges(): void {
-    this.isCellSelected = this.selectedCellId
-      ? this.selectedCellId !== ''
+    this.isCellSelected = this.selectedCell
+      ? this.selectedCell.id !== ''
       : false;
+  }
+  onMarkCell() {
+    this.selectedCell.status = CellStatus.MARKED;
+    this.markCell.emit();
   }
 }

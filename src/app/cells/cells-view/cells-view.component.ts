@@ -9,14 +9,16 @@ import { CellsService } from '../cells.service';
 })
 export class CellsViewComponent implements OnInit {
   cells: Cell[][];
-  selectedCellId: string;
+  selectedCell: Cell;
   constructor(private cellsService: CellsService) {}
 
   ngOnInit() {
     this.cells = this.cellsService.getCells(7, 9);
   }
-  selectCell(cellId: string) {
-    alert('cellId:' + cellId);
-    this.selectedCellId = cellId;
+  selectCell(cell: Cell) {
+    this.selectedCell = cell;
+  }
+  resetSelectedCell() {
+    this.selectedCell = null;
   }
 }
