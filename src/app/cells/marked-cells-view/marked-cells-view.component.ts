@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import Cell, { CellStatus } from 'src/app/models/cell';
 
 @Component({
   selector: 'app-marked-cells-view',
@@ -6,9 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./marked-cells-view.component.css'],
 })
 export class MarkedCellsViewComponent implements OnInit {
-  // @Input() markedCells = [];
-  @Input() markedCells = ['E1', 'E2', 'E3'];
+  @Input() markedCells = [];
   constructor() {}
 
   ngOnInit() {}
+  unMarkCell(cell: Cell) {
+    cell.status = CellStatus.NORMAL;
+  }
 }

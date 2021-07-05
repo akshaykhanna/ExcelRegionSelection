@@ -4,8 +4,8 @@
   <ul  *ngIf="markedCells.length > 0">
     <li *ngFor="let markedCell of markedCells">
       <div class="list-item">
-        <span>{{ markedCell }}</span>
-        <a class="remove-link">remove</a>
+        <span>{{ markedCell.id }}</span>
+        <a class="remove-link" (click)="unMarkCell(markedCell)" >remove</a>
       </div>
     </li>
   </ul>
