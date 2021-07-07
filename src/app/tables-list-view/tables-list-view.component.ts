@@ -10,21 +10,21 @@ import DataTable from '../models/data-table';
   styleUrls: ['./tables-list-view.component.css'],
 })
 export class DataTablesListComponent implements OnInit {
-  dataTablesString = ['Data table 1', 'Data table 2', 'Data table 3'];
-  seletedTable: string;
-  dataTables: DataTable[];
+  seletedTableTitle: string;
+  dataTables: DataTable[] = [];
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
+    this.dataTables = [];
     this.dataService.getDataTables().subscribe((dataTables: DataTable[]) => {
       console.log('ak dataTables: ', dataTables);
       this.dataTables = dataTables;
     });
   }
-  onTableSelect(tableName) {
-    this.seletedTable = tableName;
+  onTableSelect(dataTableTitle: string) {
+    this.seletedTableTitle = dataTableTitle;
   }
-  isTableSelected(tableName) {
-    return this.seletedTable === tableName;
+  isTableSelected(dataTableTitle: string) {
+    return this.seletedTableTitle === dataTableTitle;
   }
 }
