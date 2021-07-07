@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { API_URL } from './config';
 
 @Injectable({
   providedIn: 'root',
@@ -23,15 +24,9 @@ export class HttpService {
         console.log('data: ', data);
       });
   }
-  graphQLRequest() {
-    const query = `{
-        dataTables {
-          id
-          title
-        }
-      }`;
+  graphQLRequest(query) {
     this.http
-      .post('http://localhost:4000/__graphq', {
+      .post(API_URL, {
         query,
         headers: {
           'Content-Type': 'application/json',
