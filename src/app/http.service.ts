@@ -23,4 +23,22 @@ export class HttpService {
         console.log('data: ', data);
       });
   }
+  graphQLRequest() {
+    const query = `{
+        dataTables {
+          id
+          title
+        }
+      }`;
+    this.http
+      .post('http://localhost:4000/__graphq', {
+        query,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .subscribe((data) => {
+        console.log('gqlResp: ', data);
+      });
+  }
 }

@@ -14,6 +14,7 @@ export class DataTablesListComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.postData();
+    this.httpService.graphQLRequest();
   }
   onTableSelect(tableName) {
     this.seletedTable = tableName;
