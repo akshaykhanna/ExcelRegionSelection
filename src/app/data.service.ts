@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import GraphQLResponse from './models/graphql';
+import DataTable from './models/data-table';
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs/internal/Observable';
 
 const dataTablesQuery = `{
   dataTables {
@@ -11,13 +15,12 @@ const dataTablesQuery = `{
 @Injectable({
   providedIn: 'root'
 })
-
 export class DataService {
+  constructor(private httpService: HttpService) {}
 
-  constructor(private httpService: HttpService) { }
-
-  public getDataTables() {
-    this.httpService.graphQLRequest(dataTablesQuery);
+  public getDataTables(): Observable<DataTable[]> {
+    return this.httpService
+      .graphQLRequest(dataTablesQuery)
+      .pipe(map((resp: GraphQLResponse<DataTable[]>) => resp.data));
   }
-
 }

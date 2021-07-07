@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from './config';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root',
@@ -24,16 +25,13 @@ export class HttpService {
         console.log('data: ', data);
       });
   }
-  graphQLRequest(query) {
-    this.http
+  graphQLRequest(query): Observable<any> {
+   return this.http
       .post(API_URL, {
         query,
         headers: {
           'Content-Type': 'application/json',
         },
-      })
-      .subscribe((data) => {
-        console.log('gqlResp: ', data);
       });
   }
 }
