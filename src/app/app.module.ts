@@ -5,25 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataTablesListComponent } from './tables-list-view/tables-list-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CellsViewComponent } from './cells/cells-view/cells-view.component';
-import { SelectionViewComponent } from './cells/selection-view/selection-view.component';
-import { MarkedCellsViewComponent } from './cells/marked-cells-view/marked-cells-view.component';
-import { CellsGridComponent } from './cells/cells-grid/cells-grid.component';
 import { CellsModule } from './cells/cells.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DataTablesListComponent,
-    NavbarComponent,
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CellsModule
-  ],
+  declarations: [AppComponent, DataTablesListComponent, NavbarComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, CellsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

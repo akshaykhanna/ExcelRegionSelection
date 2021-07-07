@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-tables-list-view',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class DataTablesListComponent implements OnInit {
   dataTablesString = ['Data table 1', 'Data table 2', 'Data table 3'];
   seletedTable: string;
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.httpService.getData();
+  }
   onTableSelect(tableName) {
     this.seletedTable = tableName;
   }
