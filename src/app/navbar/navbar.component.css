@@ -4,4 +4,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+}
+.navbar-brand {
+  left: 32px;
+  top: 28px;
+  border-radius: 0px;
+  position: absolute;
 }
