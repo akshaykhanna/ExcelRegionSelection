@@ -50,29 +50,6 @@ export class CellsService {
     }
     return cells;
   }
-  public getCells(rows: number, cols: number): Cell[][] {
-    const cells: Cell[][] = [];
-    let counter = 0;
-    for (let i = 0; i < rows; i++) {
-      const cellsRow = [];
-      for (let j = 0; j < cols; j++) {
-        if ((counter + 1) % 10 === 0) {
-          cellsRow.push(
-            new Cell(
-              this.colName(j),
-              i + 1,
-              String(++counter),
-              CellStatus.MARKED
-            )
-          );
-        } else {
-          cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter)));
-        }
-      }
-      cells.push(cellsRow);
-    }
-    return cells;
-  }
   public colName(n: number): string {
     const ordA = 'a'.charCodeAt(0);
     const ordZ = 'z'.charCodeAt(0);
