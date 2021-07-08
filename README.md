@@ -23,7 +23,7 @@ Run below command to run GraphQL server
 Run below command to run Angular client app
 #### `ng serve`
 
-### Run everything (client+server)
+### Run everything (client+server) 🙂
 Run below command to run project (it will start both GraphQL server and Angular client app)
 #### `yarn start`
 
