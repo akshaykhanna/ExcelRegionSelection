@@ -14,7 +14,7 @@ export class CellsViewComponent implements OnInit {
   constructor(private cellsService: CellsService) {}
 
   ngOnInit() {
-    this.cellsService.getCellsData().subscribe((rowsOfCell: Row[]) => {
+    this.cellsService.getCellsData('2').subscribe((rowsOfCell: Row[]) => {
       console.log('ak rowsOfCell: ', rowsOfCell);
       this.cells = this.cellsService.getGridCells(rowsOfCell);
     });

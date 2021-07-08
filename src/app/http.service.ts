@@ -25,10 +25,11 @@ export class HttpService {
         console.log('data: ', data);
       });
   }
-  graphQLRequest(query): Observable<any> {
+  graphQLRequest(query, variables ={}): Observable<any> {
    return this.http
       .post(API_URL, {
         query,
+        variables,
         headers: {
           'Content-Type': 'application/json',
         },

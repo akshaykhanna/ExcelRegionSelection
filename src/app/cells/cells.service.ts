@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import Cell, { CellStatus } from '../models/cell';
 import { HttpService } from '../http.service';
 import { map } from 'rxjs/operators';
-import GraphQLResponse, {
-  CellsResponse,
-} from '../models/graphql';
+import GraphQLResponse, { CellsResponse } from '../models/graphql';
 import { Observable } from 'rxjs/internal/Observable';
 import { Row } from '../models/data-table';
 
-const dataTableCellsQuery = `query getCell {
-  dataTable(id: "2") {
+const dataTableCellsQuery = `query getCell($id: ID!) {
+  dataTable(id: $id) {
     versions {
       versionNumber
       data {
@@ -26,8 +24,11 @@ const dataTableCellsQuery = `query getCell {
 export class CellsService {
   constructor(private httpService: HttpService) {}
 
-  public getCellsData(): Observable<Row[]> {
-    return this.httpService.graphQLRequest(dataTableCellsQuery).pipe(
+  public getCellsData(id: string): Observable<Row[]> {
+    const variables = `{
+      "id": "${id}"
+      }`;
+    return this.httpService.graphQLRequest(dataTableCellsQuery, variables).pipe(
       map((resp: GraphQLResponse<CellsResponse>) => {
         return resp.data.dataTable.versions[0].data.rows;
       })
@@ -40,7 +41,7 @@ export class CellsService {
       const cellsRow = [];
       const colsOfCells = rowsOfCells[i].columnData;
       for (let j = 0; j < colsOfCells.length; j++) {
-        const colOfCell = colsOfCells[i];
+        const colOfCell = colsOfCells[j];
         cellsRow.push(new Cell(this.colName(j), i + 1, colOfCell));
       }
       cells.push(cellsRow);
