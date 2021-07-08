@@ -1,0 +1,28 @@
+
+type DataTable {
+    id: ID!
+    title: String!
+    versions: [DataTableVersion!]!
+}
+
+type DataTableVersion {
+    versionNumber: Int!
+    data: Data!
+}
+
+type Data {
+    rows: [Row!]!
+}
+
+type Row {
+    columnData: [Int]!
+}
+
+type Query {
+    dataTables: [DataTable]!
+    dataTable(id: ID!): DataTable
+}
+
+
+
+
