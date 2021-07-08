@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Cell, { CellStatus } from '../../models/cell';
 import { CellsService } from '../cells.service';
 import { Row } from 'src/app/models/data-table';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cells-view',
@@ -11,11 +12,11 @@ import { Row } from 'src/app/models/data-table';
 export class CellsViewComponent implements OnInit {
   cells: Cell[][];
   selectedCell: Cell;
-  constructor(private cellsService: CellsService) {}
+  constructor(  private route: ActivatedRoute, private cellsService: CellsService) {}
 
   ngOnInit() {
-    this.cellsService.getCellsData('2').subscribe((rowsOfCell: Row[]) => {
-      console.log('ak rowsOfCell: ', rowsOfCell);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.cellsService.getCellsData(id).subscribe((rowsOfCell: Row[]) => {
       this.cells = this.cellsService.getGridCells(rowsOfCell);
     });
   }
