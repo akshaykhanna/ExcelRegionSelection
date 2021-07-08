@@ -17,7 +17,6 @@ export class DataTablesListComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getDataTables().subscribe((dataTables: DataTable[]) => {
-      console.log('ak dataTables: ', dataTables);
       this.dataTablesWithVersion = this.createDataTableWithVersion(dataTables);
     });
   }

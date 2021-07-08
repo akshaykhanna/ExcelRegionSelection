@@ -18,7 +18,6 @@ export class CellsGridComponent implements OnInit {
   constructor(private cellsService: CellsService) {}
 
   ngOnInit() {
-    console.log('this.cells:', this.cells);
     this.noOfRows = this.cells.length;
     this.noOfCols = this.cells[0].length;
     this.genrateColHeaders();
@@ -28,7 +27,6 @@ export class CellsGridComponent implements OnInit {
     for (let i = 0; i < this.noOfCols; i++) {
       this.colCharList.push(this.cellsService.colName(i));
     }
-    console.log('this.colCharList:', this.colCharList);
   }
   isMarked(cell: Cell) {
     return cell.status === CellStatus.MARKED;
