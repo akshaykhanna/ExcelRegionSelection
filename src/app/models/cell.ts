@@ -7,8 +7,6 @@ export enum CellStatus {
 class Cell {
   id: string;
   value: string;
-  rowNo?: number;
-  colStr?: string;
   status: CellStatus;
   constructor(
     colStr: string,
@@ -18,8 +16,6 @@ class Cell {
   ) {
     this.id = this.getId(colStr, rowNo);
     this.value = value;
-    this.colStr = colStr;
-    this.rowNo = rowNo;
     this.status = cellStatus;
   }
   private getId(colStr: string, rowNo: number) {
