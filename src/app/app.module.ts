@@ -7,11 +7,13 @@ import { DataTablesListComponent } from './tables-list-view/tables-list-view.com
 import { NavbarComponent } from './navbar/navbar.component';
 import { CellsModule } from './cells/cells.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [AppComponent, DataTablesListComponent, NavbarComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, CellsModule],
-  providers: [],
+  providers: [HttpService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
