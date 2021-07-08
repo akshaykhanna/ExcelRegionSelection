@@ -27,7 +27,7 @@ Run below command to run Angular client app
 Run below command to run project (it will start both GraphQL server and Angular client app)
 #### `yarn start`
 
-## Running unit tests
+## Run unit tests
 #### `ng test`
 
 ## Demo GIF 😙
