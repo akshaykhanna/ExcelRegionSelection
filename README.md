@@ -5,9 +5,7 @@ Angular web app prototype which lets user select/mark multiple cells of a sheets
 
 ## Prequistisive
 
-Start GraphQL server provided  [here](https://github.com/layer-software/frontend-engineer-test-server) on your local,
-make sure `API_URL` present in this project points to same & can alter that from below file.
-
+Just make sure `API_URL` present in this project points to right GraphQL server & can alter same from below file.
 ```
 // config.js file
 ....
@@ -17,14 +15,19 @@ export const API_URL = 'http://localhost:4000';
 
 ## Available Scripts
 
-### Development server
+### GraphQL Server
+Run below command to run GraphQL server
+#### `node server.mjs`
 
-Run below command to run project:
+### Client App
+Run below command to run Angular client app
+#### `ng serve`
 
-#### `yarn start` or `ng serve`
+### Run everything (client+server)
+Run below command to run project (it will start both GraphQL server and Angular client app)
+#### `yarn start`
 
 ## Running unit tests
-
 #### `ng test`
 
 ## Demo GIF 😙
