@@ -1,7 +1,6 @@
 export enum CellStatus {
   NORMAL,
   MARKED,
-  SELECTED,
 }
 
 class Cell {
