@@ -18,6 +18,6 @@ export interface Data {
 }
 
 export interface Row {
-  columnData: [];
+  columnData: number[];
 }
 export default DataTable;

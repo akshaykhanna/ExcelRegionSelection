@@ -44,12 +44,13 @@ export class CellsService {
       const colsOfCells = rowsOfCells[i].columnData;
       for (let j = 0; j < colsOfCells.length; j++) {
         const colOfCell = colsOfCells[j];
-        cellsRow.push(new Cell(this.colName(j), i + 1, colOfCell));
+        cellsRow.push(new Cell(this.colName(j), i + 1, String(colOfCell)));
       }
       cells.push(cellsRow);
     }
     return cells;
   }
+
   public colName(n: number): string {
     const ordA = 'a'.charCodeAt(0);
     const ordZ = 'z'.charCodeAt(0);
