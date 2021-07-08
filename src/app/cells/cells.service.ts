@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Cell, { CellStatus } from '../models/cell';
+import Cell from '../models/cell';
 import { HttpService } from '../http.service';
 import { map } from 'rxjs/operators';
 import GraphQLResponse, { CellsResponse } from '../models/graphql';
