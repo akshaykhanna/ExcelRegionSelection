@@ -6,7 +6,7 @@ Angular web app prototype which lets user select/mark multiple cells of a sheets
 ## Prequistisive
 
 Start GraphQL server provided  [here](https://github.com/layer-software/frontend-engineer-test-server) on your local,
-make sure `API_URL` present in this project to same & can alter that from below file.
+make sure `API_URL` present in this project points to same & can alter that from below file.
 
 ```
 // config.js file
