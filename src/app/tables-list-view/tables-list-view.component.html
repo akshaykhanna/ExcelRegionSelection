@@ -6,7 +6,7 @@
       (click)="onTableSelect(dataTable.title)"
     >
       <span class="item-name"> {{ dataTable.title }}</span>
-      <button *ngIf="isTableSelected(dataTable.title)" class="app-button">
+      <button *ngIf="isTableSelected(dataTable.title)" class="app-button" (click)="navigateToCells(dataTable.id)">
         SHARE
       </button>
     </div>

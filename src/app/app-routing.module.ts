@@ -6,7 +6,7 @@ import { DataTablesListComponent } from './tables-list-view/tables-list-view.com
 
 const routes: Routes = [
   { path: '',   component: DataTablesListComponent },
-  { path: 'cells', component: CellsViewComponent }
+  { path: 'cells/:id', component: CellsViewComponent }
 ];
 
 @NgModule({

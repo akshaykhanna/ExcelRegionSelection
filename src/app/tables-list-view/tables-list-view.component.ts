@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { DataService } from '../data.service';
 import DataTable from '../models/data-table';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tables-list-view',
@@ -12,7 +11,7 @@ import DataTable from '../models/data-table';
 export class DataTablesListComponent implements OnInit {
   seletedTableTitle: string;
   dataTables: DataTable[] = [];
-  constructor(private dataService: DataService) {}
+  constructor(private router: Router, private dataService: DataService, ) {}
 
   ngOnInit() {
     this.dataTables = [];
@@ -27,4 +26,8 @@ export class DataTablesListComponent implements OnInit {
   isTableSelected(dataTableTitle: string) {
     return this.seletedTableTitle === dataTableTitle;
   }
+  navigateToCells(id: string) {
+    this.router.navigate(['/cells', id]);
+  }
+
 }
