@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import Cell, { CellStatus } from '../models/cell';
 import { HttpService } from '../http.service';
 import { map } from 'rxjs/operators';
-import GraphQLResponse, { DataTableResponse, CellsResponse } from '../models/graphql';
+import GraphQLResponse, {
+  CellsResponse,
+} from '../models/graphql';
 import { Observable } from 'rxjs/internal/Observable';
-import { Data } from '../models/data-table';
+import { Row } from '../models/data-table';
 
 const dataTableCellsQuery = `query getCell {
   dataTable(id: "2") {
@@ -21,19 +23,30 @@ const dataTableCellsQuery = `query getCell {
 @Injectable({
   providedIn: 'root',
 })
-
 export class CellsService {
   constructor(private httpService: HttpService) {}
 
-  public getCellsData(): Observable<Data> {
-    return this.httpService.graphQLRequest(dataTableCellsQuery)
-    .pipe(
+  public getCellsData(): Observable<Row[]> {
+    return this.httpService.graphQLRequest(dataTableCellsQuery).pipe(
       map((resp: GraphQLResponse<CellsResponse>) => {
-         return resp.data.dataTable.versions[0].data;
+        return resp.data.dataTable.versions[0].data.rows;
       })
     );
   }
 
+  public getGridCells(rowsOfCells: Row[]): Cell[][] {
+    const cells: Cell[][] = [];
+    for (let i = 0; i < rowsOfCells.length; i++) {
+      const cellsRow = [];
+      const colsOfCells = rowsOfCells[i].columnData;
+      for (let j = 0; j < colsOfCells.length; j++) {
+        const colOfCell = colsOfCells[i];
+        cellsRow.push(new Cell(this.colName(j), i + 1, colOfCell));
+      }
+      cells.push(cellsRow);
+    }
+    return cells;
+  }
   public getCells(rows: number, cols: number): Cell[][] {
     const cells: Cell[][] = [];
     let counter = 0;
@@ -41,15 +54,20 @@ export class CellsService {
       const cellsRow = [];
       for (let j = 0; j < cols; j++) {
         if ((counter + 1) % 10 === 0) {
-          cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter), CellStatus.MARKED));
+          cellsRow.push(
+            new Cell(
+              this.colName(j),
+              i + 1,
+              String(++counter),
+              CellStatus.MARKED
+            )
+          );
         } else {
           cellsRow.push(new Cell(this.colName(j), i + 1, String(++counter)));
         }
-
       }
       cells.push(cellsRow);
     }
-    console.log(cells);
     return cells;
   }
   public colName(n: number) {

@@ -1,15 +1,19 @@
-<div class="cells-view">
-  <div class="main">
+<div class="cells-view" *ngIf="cells && cells.length > 0">
+  <div class="main" >
     <app-cells-grid
+
       [cells]="cells"
       [selectedCell]="selectedCell"
       (cellClick)="selectCell($event)"
     ></app-cells-grid>
-    <app-selection-view [selectedCell]="selectedCell"
-    (markCell)="resetSelectedCell()"
+    <app-selection-view
+      [selectedCell]="selectedCell"
+      (markCell)="resetSelectedCell()"
     ></app-selection-view>
   </div>
   <div class="right-aside">
-    <app-marked-cells-view [markedCells]='getMarkedCells()'></app-marked-cells-view>
+    <app-marked-cells-view
+      [markedCells]="getMarkedCells()"
+    ></app-marked-cells-view>
   </div>
 </div>
