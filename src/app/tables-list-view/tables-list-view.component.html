@@ -1,12 +1,12 @@
 <ul class="list">
-  <li *ngFor="let dataTable of dataTables">
+  <li *ngFor="let dataTable of dataTablesWithVersion">
     <div
       class="list-item"
-      [class.bg-dark-grey]="isTableSelected(dataTable.title)"
-      (click)="onTableSelect(dataTable.title)"
+      [class.bg-dark-grey]="isTableSelected(dataTable)"
+      (click)="onTableSelect(dataTable)"
     >
-      <span class="item-name"> {{ dataTable.title }}</span>
-      <button *ngIf="isTableSelected(dataTable.title)" class="app-button" (click)="navigateToCells(dataTable.id)">
+      <span class="item-name"> {{ dataTable.title }} ( Ver: {{dataTable.versionNo}}  )</span>
+      <button *ngIf="isTableSelected(dataTable)" class="app-button" (click)="navigateToCells(dataTable)">
         SHARE
       </button>
     </div>

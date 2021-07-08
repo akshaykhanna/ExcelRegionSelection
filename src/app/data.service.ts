@@ -9,6 +9,9 @@ const dataTablesQuery = `{
   dataTables {
     id
     title
+    versions {
+      versionNumber
+    }
   }
 }`;
 

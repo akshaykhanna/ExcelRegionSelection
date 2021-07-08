@@ -16,7 +16,8 @@ export class CellsViewComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.cellsService.getCellsData(id).subscribe((rowsOfCell: Row[]) => {
+    const verNo = +this.route.snapshot.paramMap.get('verNo');
+    this.cellsService.getCellsData(id, verNo).subscribe((rowsOfCell: Row[]) => {
       this.cells = this.cellsService.getGridCells(rowsOfCell);
     });
   }

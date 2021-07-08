@@ -24,13 +24,15 @@ const dataTableCellsQuery = `query getCell($id: ID!) {
 export class CellsService {
   constructor(private httpService: HttpService) {}
 
-  public getCellsData(id: string): Observable<Row[]> {
+  public getCellsData(id: string, verNo: number): Observable<Row[]> {
     const variables = `{
       "id": "${id}"
       }`;
     return this.httpService.graphQLRequest(dataTableCellsQuery, variables).pipe(
       map((resp: GraphQLResponse<CellsResponse>) => {
-        return resp.data.dataTable.versions[0].data.rows;
+        return resp.data.dataTable.versions.find(
+          (ver) => ver.versionNumber === verNo
+        ).data.rows;
       })
     );
   }

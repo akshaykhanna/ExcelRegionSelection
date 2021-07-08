@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import DataTable from '../models/data-table';
-import {Router} from '@angular/router';
+import DataTable, {
+  DataTableWithVersion,
+} from '../models/data-table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables-list-view',
@@ -9,25 +11,40 @@ import {Router} from '@angular/router';
   styleUrls: ['./tables-list-view.component.css'],
 })
 export class DataTablesListComponent implements OnInit {
-  seletedTableTitle: string;
-  dataTables: DataTable[] = [];
-  constructor(private router: Router, private dataService: DataService, ) {}
+  seletedTable: DataTableWithVersion;
+  dataTablesWithVersion: DataTableWithVersion[] = [];
+  constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataTables = [];
     this.dataService.getDataTables().subscribe((dataTables: DataTable[]) => {
       console.log('ak dataTables: ', dataTables);
-      this.dataTables = dataTables;
+      this.dataTablesWithVersion = this.createDataTableWithVersion(dataTables);
     });
   }
-  onTableSelect(dataTableTitle: string) {
-    this.seletedTableTitle = dataTableTitle;
+  createDataTableWithVersion(tables: DataTable[]): DataTableWithVersion[] {
+    const tablesWithVersion: DataTableWithVersion[] = [];
+    for (const table of tables) {
+      for (const version of table.versions) {
+        tablesWithVersion.push({
+          id: table.id,
+          title: table.title,
+          versionNo: version.versionNumber,
+        });
+      }
+    }
+    return tablesWithVersion;
   }
-  isTableSelected(dataTableTitle: string) {
-    return this.seletedTableTitle === dataTableTitle;
+  onTableSelect(dataTableWithVer: DataTableWithVersion) {
+    this.seletedTable = dataTableWithVer;
   }
-  navigateToCells(id: string) {
-    this.router.navigate(['/cells', id]);
+  isTableSelected(dataTableWithVer: DataTableWithVersion) {
+    return this.seletedTable === dataTableWithVer;
   }
-
+  navigateToCells(dataTableWithVer: DataTableWithVersion) {
+    this.router.navigate([
+      '/cells',
+      dataTableWithVer.id,
+      dataTableWithVer.versionNo,
+    ]);
+  }
 }
