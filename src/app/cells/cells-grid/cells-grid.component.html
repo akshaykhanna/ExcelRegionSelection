@@ -1,6 +1,6 @@
 <div>
   <h1>Data</h1>
-  <table *ngIf="cells.length > 0" cellspacing="6">
+  <table *ngIf="cells && cells.length > 0" cellspacing="6">
     <tr>
       <th></th>
       <th *ngFor="let colName of colCharList">{{ colName }}</th>

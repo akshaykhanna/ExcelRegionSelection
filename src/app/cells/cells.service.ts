@@ -73,7 +73,7 @@ export class CellsService {
     }
     return cells;
   }
-  public colName(n: number) {
+  public colName(n: number): string {
     const ordA = 'a'.charCodeAt(0);
     const ordZ = 'z'.charCodeAt(0);
     const len = ordZ - ordA + 1;
