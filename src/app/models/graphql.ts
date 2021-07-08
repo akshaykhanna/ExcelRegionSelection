@@ -6,6 +6,9 @@ interface GraphQLResponse<T> {
 export interface DataTableResponse {
   dataTables: DataTable[];
 }
+export interface CellsResponse {
+  dataTable: DataTable;
+}
 
 export default GraphQLResponse;
 

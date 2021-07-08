@@ -1,7 +1,7 @@
 interface DataTable {
-  id: string;
-  title: string;
-  versions?: DataTableVersion;
+  id?: string;
+  title?: string;
+  versions?: DataTableVersion[];
 }
 export interface DataTableVersion {
   versionNumber: number;
@@ -9,7 +9,7 @@ export interface DataTableVersion {
 }
 
 export interface Data {
-  rows: Row[];
+  rows?: Row[];
 }
 
 export interface Row {

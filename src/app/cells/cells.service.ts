@@ -1,11 +1,38 @@
 import { Injectable } from '@angular/core';
 import Cell, { CellStatus } from '../models/cell';
+import { HttpService } from '../http.service';
+import { map } from 'rxjs/operators';
+import GraphQLResponse, { DataTableResponse, CellsResponse } from '../models/graphql';
+import { Observable } from 'rxjs/internal/Observable';
+import { Data } from '../models/data-table';
 
+const dataTableCellsQuery = `query getCell {
+  dataTable(id: "2") {
+    versions {
+      versionNumber
+      data {
+        rows {
+          columnData
+        }
+      }
+    }
+  }
+}`;
 @Injectable({
   providedIn: 'root',
 })
+
 export class CellsService {
-  constructor() {}
+  constructor(private httpService: HttpService) {}
+
+  public getCellsData(): Observable<Data> {
+    return this.httpService.graphQLRequest(dataTableCellsQuery)
+    .pipe(
+      map((resp: GraphQLResponse<CellsResponse>) => {
+         return resp.data.dataTable.versions[0].data;
+      })
+    );
+  }
 
   public getCells(rows: number, cols: number): Cell[][] {
     const cells: Cell[][] = [];
